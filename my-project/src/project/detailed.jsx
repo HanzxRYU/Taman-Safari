@@ -1,0 +1,170 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+function About() {
+  return (
+    <div className="font-sans">
+      {/* Navbar */}
+      <nav className="bg-black text-white py-6 px-6 md:px-12 flex justify-between items-center text-lg font-poppins">
+        <div className="text-white text-2xl font-bold">MyLogo</div>
+        <div className="flex-1 hidden md:flex justify-center space-x-12 ml-20">
+          <Link
+            to="#"
+            className="relative text-base font-medium tracking-wide text-white hover:text-gray-400 transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Contact Us
+          </Link>
+          <Link
+            to="/"
+            className="relative text-base font-medium tracking-wide text-white hover:text-gray-400 transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Home
+          </Link>
+          <Link
+            to="/Gallery"
+            className="relative text-base font-medium tracking-wide text-white hover:text-gray-400 transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Gallery Wisata
+          </Link>
+        </div>
+        <div className="flex items-center">
+          <Link
+            to="#"
+            className="bg-white text-black py-2 px-4 md:px-6 rounded-full hover:bg-gray-100 transition duration-300 text-sm md:text-base"
+          >
+            Contact Us
+          </Link>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <div
+        className="relative w-full h-[500px] bg-cover bg-center"
+        style={{ backgroundImage: `url("jerapahh.png")` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center text-white px-6 md:px-20">
+          <motion.div
+            className="text-left max-w-xl"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 font-poppins">
+              Tentang Taman Safari
+            </h1>
+            <p className="text-lg md:text-xl font-light text-gray-200 tracking-wide">
+              Jelajahi keajaiban alam dan kehidupan satwa di habitat aslinya.
+              Taman Safari Indonesia menghadirkan pengalaman yang tak terlupakan
+              dalam balutan edukasi, konservasi, dan petualangan.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="bg-white px-6 py-12 max-w-6xl mx-auto mt-32 grid md:grid-cols-2 gap-6 items-start">
+        <div className="flex justify-start">
+          <motion.div
+            className="rounded-2xl overflow-hidden w-full h-[350px] md:w-[500px] ml-2"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <img
+              src="Pemandangann.png"
+              alt="Pemandangan"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+        <div className="pl-2">
+          <motion.h3
+            className="text-4xl font-bold mb-4"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            Sejarah Singkat Taman Safari |
+          </motion.h3>
+          <motion.p
+            className="text-gray-700 text-justify text-lg mb-4"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            Taman Safari Indonesia adalah salah satu taman safari terbesar di
+            dunia, yang terletak di berbagai lokasi di Indonesia. Sejak dibuka
+            pertama kali, Taman Safari bertujuan untuk melestarikan berbagai
+            jenis satwa langka dan menjadi tempat edukasi yang interaktif bagi
+            masyarakat.
+          </motion.p>
+          <motion.p
+            className="text-gray-700 text-justify text-lg mb-4"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
+            Menggunakan konsep taman wisata alam terbuka, pengunjung dapat
+            berinteraksi dengan berbagai jenis hewan, mulai dari yang biasa
+            hingga yang dilindungi. Taman Safari Indonesia juga memiliki
+            berbagai program edukasi yang bertujuan untuk meningkatkan kesadaran
+            tentang pentingnya pelestarian satwa dan alam.
+          </motion.p>
+          <motion.p
+            className="text-gray-700 text-justify text-lg mb-4"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
+          >
+            Taman Safari Indonesia juga berkomitmen untuk menjaga keberlanjutan
+            ekosistem serta memperkenalkan pentingnya pelestarian alam kepada
+            masyarakat. Dengan banyaknya pengunjung setiap tahunnya, taman
+            safari ini berusaha untuk menciptakan pengalaman yang aman dan
+            menyenangkan, sembari mengedukasi tentang konservasi.
+          </motion.p>
+        </div>
+      </div>
+
+      {/* Footer Section */}
+      <footer className="bg-black text-white py-8 mt-32">
+        <div className="container mx-auto px-6 text-center">
+          <div className="mb-6">
+            <h4 className="text-2xl font-semibold">Taman Safari Indonesia</h4>
+            <p className="text-gray-400 mt-2">
+              Edukasi, Konservasi, dan Wisata Alam
+            </p>
+          </div>
+          <div className="flex justify-center space-x-8 mb-6">
+            <a
+              href="#"
+              className="text-white hover:text-gray-400 transition duration-300"
+            >
+              Facebook
+            </a>
+            <a
+              href="#"
+              className="text-white hover:text-gray-400 transition duration-300"
+            >
+              Twitter
+            </a>
+            <a
+              href="#"
+              className="text-white hover:text-gray-400 transition duration-300"
+            >
+              Instagram
+            </a>
+          </div>
+          <p className="text-gray-400 text-sm">
+            &copy; 2025 Taman Safari Indonesia. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default About;
+
+
+
