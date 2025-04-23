@@ -1,14 +1,61 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 function About() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  // Menutup menu jika klik di luar area menu
+  const handleOutsideClick = (e) => {
+    if (menuRef.current && !menuRef.current.contains(e.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="font-sans">
       {/* Navbar */}
-      <nav className="bg-black text-white py-6 px-6 md:px-12 flex justify-between items-center text-lg font-poppins">
+      <nav className="bg-black text-white py-6 px-6 md:px-12 flex justify-between items-center text-lg font-poppins relative z-50">
         <div className="text-white text-2xl font-bold">MyLogo</div>
-        <div className="flex-1 hidden md:flex justify-center space-x-12 ml-20">
+
+        {/* Hamburger Menu */}
+        <button onClick={toggleMenu} className="md:hidden z-50">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+        {/* Desktop Menu */}
+        <div className="flex-1 hidden md:flex justify-center space-x-12 ml-10">
+          <Link
+            to="/"
+            className="relative text-base font-medium tracking-wide text-white hover:text-gray-400 transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Home
+          </Link>
           <Link
             to="#"
             className="relative text-base font-medium tracking-wide text-white hover:text-gray-400 transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
@@ -16,10 +63,10 @@ function About() {
             Contact Us
           </Link>
           <Link
-            to="/"
+            to="/About"
             className="relative text-base font-medium tracking-wide text-white hover:text-gray-400 transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
-            Home
+            Tentang Taman Safari
           </Link>
           <Link
             to="/Gallery"
@@ -28,16 +75,50 @@ function About() {
             Gallery Wisata
           </Link>
         </div>
-        <div className="flex items-center">
-          <Link
-            to="#"
-            className="bg-white text-black py-2 px-4 md:px-6 rounded-full hover:bg-gray-100 transition duration-300 text-sm md:text-base"
-          >
-            Contact Us
-          </Link>
+
+        {/* Mobile Menu */}
+        <div
+          ref={menuRef}
+          className={`md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 transition-all ${
+            isMenuOpen ? "block" : "hidden"
+          }`}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <div className="flex justify-center items-center w-full h-full">
+            <div
+              className="bg-white p-6 rounded-lg w-4/5"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ul className="flex flex-col items-center gap-4">
+                <li
+                  className="text-xl text-gray-700 hover:text-blue-600 cursor-pointer"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Link to="/">Home</Link>
+                </li>
+                <li
+                  className="text-xl text-gray-700 hover:text-blue-600 cursor-pointer"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Link to="#">Contact Us</Link>
+                </li>
+                <li
+                  className="text-xl text-gray-700 hover:text-blue-600 cursor-pointer"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Link to="/About">Tentang Taman Safari</Link>
+                </li>
+                <li
+                  className="text-xl text-gray-700 hover:text-blue-600 cursor-pointer"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Link to="/Gallery">Gallery Wisata</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </nav>
-
       {/* Hero Section */}
       <div
         className="relative w-full h-[500px] bg-cover bg-center"
@@ -165,6 +246,3 @@ function About() {
 }
 
 export default About;
-
-
-

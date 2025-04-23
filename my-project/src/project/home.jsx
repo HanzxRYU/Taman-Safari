@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Gallery from "./Gallery";
 import About from "./detailed";
+import Book from "./book";
+import Contact from "./contact";
 
 function Home() {
   return (
@@ -14,7 +16,7 @@ function Home() {
         {/* Link navbar - hanya tampil di desktop */}
         <div className="flex-1 hidden md:flex justify-center space-x-12 ml-20">
           <Link
-            to="#"
+            to="/Contact"
             className="relative text-base font-medium tracking-wide text-white hover:text-gray-400 transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
             Contact Us
@@ -36,7 +38,7 @@ function Home() {
         {/* Tombol Contact Us */}
         <div className="flex items-center">
           <Link
-            to="#"
+            to="/Contact"
             className="bg-white text-black py-2 px-4 md:px-6 rounded-full hover:bg-gray-100 transition duration-300 text-sm md:text-base"
           >
             Contact Us
@@ -79,33 +81,38 @@ function Home() {
 
           {/* Tombol utama */}
           <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4 md:space-x-4">
-            <motion.button
-              className="bg-white text-black py-2 px-6 rounded-full hover:bg-gray-200 hover:scale-105 transition duration-300 w-full max-w-[250px] text-sm md:text-base text-center flex justify-center items-center whitespace-nowrap"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Lihat Wisata
-            </motion.button>
+            <Link to="/gallery" className="w-full max-w-[250px]">
+              <motion.div
+                className="bg-white text-black py-2 px-6 rounded-full hover:bg-gray-200 hover:scale-105 transition duration-300 text-sm md:text-base text-center flex justify-center items-center whitespace-nowrap"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Lihat Wisata
+              </motion.div>
+            </Link>
 
-            {/* Tombol khusus mobile */}
-            <motion.button
-              className="bg-white text-black py-2 px-6 rounded-full hover:bg-gray-200 hover:scale-105 transition duration-300 w-full max-w-[250px] text-sm md:text-base text-center flex justify-center items-center whitespace-nowrap block md:hidden"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              Tentang Taman Safari
-            </motion.button>
+            <Link to="/about" className="block md:hidden w-full max-w-[250px]">
+              <motion.div
+                className="bg-white text-black py-2 px-6 rounded-full hover:bg-gray-200 hover:scale-105 transition duration-300 text-sm md:text-base text-center flex justify-center items-center whitespace-nowrap"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                Tentang Taman Safari
+              </motion.div>
+            </Link>
 
-            <motion.button
-              className="bg-white text-black py-2 px-6 rounded-full hover:bg-gray-200 hover:scale-105 transition duration-300 w-full max-w-[250px] text-sm md:text-base text-center flex justify-center items-center whitespace-nowrap"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              Pesan Tiket
-            </motion.button>
+            <Link to="/Book" className="w-full max-w-[250px]">
+              <motion.div
+                className="bg-white text-black py-2 px-6 rounded-full hover:bg-gray-200 hover:scale-105 transition duration-300 text-sm md:text-base text-center flex justify-center items-center whitespace-nowrap"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                Pesan Tiket
+              </motion.div>
+            </Link>
           </div>
         </div>
       </div>
@@ -280,7 +287,7 @@ function Home() {
           Nikmati pengalaman tak terlupakan bersama keluarga dan alam 🌿🐾
         </p>
       </motion.div>
-      
+
       {/* Footer Section */}
       <footer className="bg-black text-white py-8 mt-32">
         <div className="container mx-auto px-6 text-center">
@@ -326,6 +333,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/Gallery" element={<Gallery />} />
+        <Route path="/Book" element={<Book />} />
+        <Route path="/Contact" element={<Contact />} />
       </Routes>
     </Router>
   );
