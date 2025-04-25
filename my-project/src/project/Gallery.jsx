@@ -59,7 +59,7 @@ function Gallery() {
             Home
           </Link>
           <Link
-            to="#"
+            to="/Contact"
             className="relative text-base font-medium tracking-wide text-white hover:text-gray-400 transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
             Contact Us
